@@ -1,0 +1,40 @@
+<div class="container my-5">
+  <h1 class="text-center mb-4">Detalle del Pokémon</h1>
+
+  <div *ngIf="pokemon" class="card shadow-sm">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img [src]="pokemon.sprites.front_default" class="img-fluid rounded-start" alt="{{ pokemon.name }}">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ pokemon.name }}</h5>
+          <p class="card-text"><strong>ID:</strong> {{ pokemon.id }}</p>
+          <p class="card-text"><strong>Altura:</strong> {{ pokemon.height / 10 }} m</p>
+          <p class="card-text"><strong>Peso:</strong> {{ pokemon.weight / 10 }} kg</p>
+
+          <div *ngIf="pokemon.abilities.length > 0">
+            <h6>Habilidades:</h6>
+            <ul>
+              <li *ngFor="let ability of pokemon.abilities">
+                {{ ability.ability.name }}
+              </li>
+            </ul>
+          </div>
+
+          <div *ngIf="pokemon.types.length > 0">
+            <h6>Tipos:</h6>
+            <ul>
+              <li *ngFor="let type of pokemon.types">
+                {{ type.type.name}}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!pokemon" class="text-center">
+  </div>
+</div>
